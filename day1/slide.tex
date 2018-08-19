@@ -1,0 +1,93 @@
+\documentclass[11pt,serif]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{xeCJK}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{bbm}
+\usepackage{graphicx}
+\usetheme{Boadilla}
+
+\begin{document}
+	\author{丁尧尧}
+	\title{题目选讲}
+	\date{\today}
+	
+	\begin{frame}[plain]
+	\maketitle
+	\end{frame} 
+
+	\begin{frame}{百度之星2018复赛 T1}
+		
+		\begin{problem}{没有兄弟的舞会}
+			给你一棵$n$个点有根树，每个点有个权值，如果两个点有相同的父亲，则他们是兄弟。你现在需要找一个点集，其中最多有一对点是兄弟关系，问这个点集的权值和是多少？
+			
+			$1 \leq n \leq 10^5$.
+		\end{problem}
+		\pause
+		\begin{solution}
+			贪心或树型DP
+		\end{solution}
+	\end{frame}
+
+	\begin{frame}{百度之星2018复赛 T2}
+		\begin{problem}[序列期望]
+			令$X_1,X_2,\dots,X_n$是整数随机变量，其中$X_i$是从$[l_i,r_i]$中随机选择的一个整数，令
+			\begin{align}
+				h & = max(X_1,X_2,\dots,X_n) \\
+				Y & = \prod_{i = 1}^{n}(h + 1 - X_i)
+			\end{align}
+			问模$10^9+7$意义下$\mathbb{E}[Y]$.
+			
+			$1 \leq n \leq 100, 1 \leq l_i \leq r_i \leq 10^4$.
+		\end{problem}
+		\pause
+		\begin{solution}
+			枚举$h$
+		\end{solution}
+	\end{frame}
+
+	\begin{frame}{百度之星2018复赛 T3}
+		\begin{problem}[带劲的and和]
+			给你一个$n$个点$m$条边的无向图，每个点有一个非负权值，点$i$的权值用$v_i$表示，令
+			$$f(i,j) = \mathbbm{1}_{\text{$i$和$j$连通}}$$求：
+			$$
+				\sum_{i=1}^{n-1} \sum_{j=i+1}^{n} f(i,j) \times \max(v_i, v_j)\times (v_i \& v_j)
+			$$
+			
+			$1 \leq n \leq 10^5$
+		\end{problem}
+		
+		\pause 
+	
+		\begin{solution}
+			先求连通块，对于同一个连通块的所有权值从小到达排序，然后从前往后算，其中$v_i \& v_j$需要记录每一位出现多少次。
+		\end{solution}
+	\end{frame}
+
+	\begin{frame}{2018 Multi-University Training Contest 8}
+		
+		\begin{problem}[Character Encoding]
+			求
+			$$
+				\sum_{i = 1}^{m}x_i = k \quad (0 \leq x_i < n)
+			$$
+			的方案数(模$10^9+7$)。
+			
+			$1 \leq m, k, n \leq 10^5$.
+		\end{problem}
+	
+		\pause
+		
+		\begin{solution}
+			容斥
+		\end{solution}
+	
+	\end{frame} 
+
+	\begin{frame}
+		$d_{t+1} = \sum_{i=1}^n \rho_{\mathrm{LCA}(x, i)} d_t(x) $.
+	\end{frame}
+
+\end{document}
