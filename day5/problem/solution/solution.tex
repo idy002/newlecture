@@ -1,0 +1,42 @@
+\documentclass[11pt,serif]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{xeCJK}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usetheme{Boadilla}
+\begin{document}
+	\author{丁尧尧}
+	\title{Solution}
+	\subtitle{day1}
+	\date{\today}
+	
+	\begin{frame}[plain]
+		\maketitle
+	\end{frame}
+
+	\begin{frame}{split}
+		\begin{solution}
+			$4$是最小的合数，然后我们贪心地取，最后根据$n \bmod 4$来特判一下。
+		\end{solution}
+	\end{frame}
+
+	\begin{frame}{cross} 
+		\begin{solution}
+			建一个图,如果一个两个点同$x$坐标或同$y$坐标,则把它们连边,分别求解每个连通块的答案,再乘起来.
+			
+			对于一个连通块,如果它是一棵树,则答案为$2^{x+y} - 1$,否则为$2^{x+y}$,其中$x$是所有点$x$坐标集合的大小,$y$同理.
+		\end{solution}	
+	\end{frame}
+
+	\begin{frame}{string}
+		\begin{solution}
+			考虑一个长度为$k$的所有01串有$2^k$个,而一开始我们所有长度为$k$的01串最多有$100k$个,每次合并最多增加$k$个,合并$100$次增加$100k$,最终有$2^k \leq 200k$,解得$k \leq 12$.
+			
+			所以我们只需要考虑长度小于等于$12$的01串即可,然后就各种操作都可以啦.
+		\end{solution}
+	\end{frame} 
+
+\end{document}

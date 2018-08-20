@@ -1,0 +1,193 @@
+\documentclass[11pt,serif]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{xeCJK}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{bbm}
+\usepackage{graphicx}
+\usetheme{Boadilla}
+
+\begin{document}
+	\author{丁尧尧}
+	\title{题目选讲}
+	\date{\today}
+	
+	\begin{frame}[plain]
+	\maketitle
+	\end{frame} 
+
+	\begin{frame}{百度之星2018复赛 T1}
+		
+		\begin{problem}{没有兄弟的舞会}
+			给你一棵$n$个点有根树，每个点有个权值，如果两个点有相同的父亲，则他们是兄弟。你现在需要找一个点集，其中最多有一对点是兄弟关系，问这个点集的权值和是多少？
+			
+			$1 \leq n \leq 10^5$.
+		\end{problem}
+		\pause
+		\begin{solution}
+			贪心或树型DP
+		\end{solution}
+	\end{frame}
+
+	\begin{frame}{百度之星2018复赛 T2}
+		\begin{problem}[序列期望]
+			令$X_1,X_2,\dots,X_n$是整数随机变量，其中$X_i$是从$[l_i,r_i]$中随机选择的一个整数，令
+			\begin{align}
+				h & = max(X_1,X_2,\dots,X_n) \\
+				Y & = \prod_{i = 1}^{n}(h + 1 - X_i)
+			\end{align}
+			问模$10^9+7$意义下$\mathbb{E}[Y]$.
+			
+			$1 \leq n \leq 100, 1 \leq l_i \leq r_i \leq 10^4$.
+		\end{problem}
+		\pause
+		\begin{solution}
+			枚举$h$
+		\end{solution}
+	\end{frame}
+
+	\begin{frame}{百度之星2018复赛 T3}
+		\begin{problem}[带劲的and和]
+			给你一个$n$个点$m$条边的无向图，每个点有一个非负权值，点$i$的权值用$v_i$表示，令
+			$$f(i,j) = \mathbbm{1}_{\text{$i$和$j$连通}}$$求：
+			$$
+				\sum_{i=1}^{n-1} \sum_{j=i+1}^{n} f(i,j) \times \max(v_i, v_j)\times (v_i \& v_j)
+			$$
+			
+			$1 \leq n \leq 10^5$
+		\end{problem}
+		
+		\pause 
+	
+		\begin{solution}
+			先求连通块，对于同一个连通块的所有权值从小到达排序，然后从前往后算，其中$v_i \& v_j$需要记录每一位出现多少次。
+		\end{solution}
+	\end{frame}
+
+	\begin{frame}{2018 Multi-University Training Contest 8}
+		
+		\begin{problem}[Character Encoding]
+			求
+			$$
+				\sum_{i = 1}^{m}x_i = k \quad (0 \leq x_i < n)
+			$$
+			的方案数(模$10^9+7$)。
+			
+			$1 \leq m, k, n \leq 10^5$.
+		\end{problem}
+	
+		\pause
+		
+		\begin{solution}
+			容斥
+		\end{solution}
+	
+	\end{frame}
+
+	\begin{frame}{2018 Multi-University Training Contest 8}
+		\begin{problem}[Card Game]
+			给定$n$张卡片，每张卡片正反面各有一个数。问至少要翻转多少张卡片，才能使正面向上的数互不相同，并求方案数。
+		\end{problem}
+		
+		\pause 
+	
+		\begin{solution}
+			首先建图：每个数字为一个节点，每张卡片反面数字向正面数字连一条有向边。问题转化为：至少要反转多少条边的方向，才能使得每个点的入度不会超过1。我们对每个弱连通分量分别处理。易知，当底图是树或基环树时，才可能有解。对于基环树，先把环找出来，然后将环上的边的方向统一一下；非环边的方向则是唯一确定的，从环上的点向外做一遍dfs 即可。对于树，可以正反两次dfs处理出每个点作为根时所需要的反向次数，并统计出最小值以及方案数。最后将答案合并即可。
+		\end{solution}
+	\end{frame} 
+
+	\begin{frame}{2018 Multi-University Training Contest 8} 
+		\begin{problem}[Taotao Picks Apples]
+			对于一个序列，从前往后看，每次当手上没有数或者手上的数小于当前的数，就把手上的数替换成当前的数，定义手上出现的数的个数为这个序列的可见度。给定一个长为$n$的序列，有$m$个询问，每个询问两个数$(p,q)$，表示如果把$p$位置的数换成$q$，这个序列的可见度为多少？
+			
+			$1 \leq n, m \leq 10^5$
+		\end{problem}
+		\pause
+		\begin{solution}
+			法一：线段树维护
+			
+			\pause 
+			
+			法二：考虑每次修改不叠加，因此我们可以从如何对原序列进行预处理着手。
+			通过观察可以发现，将原序列从任意位置断开，我们可以通过分别维护左右段的某些信息来拼接得到答案。	
+			对于每次询问：
+			考虑这个数左边的部分加上这个数之后的答案和最大值；
+			再找到右边第一个大于左半部分最大值的数，答案相加即可。
+		\end{solution}
+	\end{frame} 
+
+	\begin{frame}{2018 Multi-University Training Contest 8} 
+		\begin{problem}[Pop the Balloons]
+			给定一个$m\times n$气球矩阵，扎掉一个气球后，同行同列的气球都消失。问对于每个$1 \leq x \leq k$，扎恰好$x$次能够清除所有气球的方案数。
+			
+			$1 \leq n \leq 20, 1 \leq m \leq 12$.
+		\end{problem}
+	\end{frame}
+	\begin{frame} 
+		\begin{solution}
+			显然扎掉的气球两两不同行且不同列。只需要求出扎x个气球的集合，然后乘以x!即可。
+			
+			由于行数较少，考虑枚举扎掉的行集合，设扎掉的行的bitmap为mask1。设dp[r][mask2]为考虑前r列，已经扎掉的气球所在行为mask2的方案数。考虑状态dp[r][mask2]的转移：
+			\begin{itemize}
+				\item 如果第i+1i+1列的气球被mask1包含，则dp[r+1][mask2] += dp[r][mask2]；
+				\item 对于第i+1i+1列的每个在mask1中，但不在mask2中的气球w，我们可以将它扎掉，即为dp[r+1][mask2|w] += dp[r][mask2]；
+			\end{itemize}
+			总复杂度:$O(nm3^m)$
+			
+			亦可以把最开始枚举的mask1放到状态里和mask2合并，复杂度不变。
+		\end{solution}
+	\end{frame}
+
+	\begin{frame}{A little tricky problem}
+		\begin{problem}
+			给你 $1 \leq x_1, x_2, \dots, x_k \leq n$, 请计算：
+			$$
+				gcd(2^{F(x_1)}-1, 2^{F(x_2)}-1, \cdots, 2^{F(x_n)}-1)
+			$$
+			其中$F(n)$是斐波那契数列：$F(0) = 0, F(1) = 1, F(2) = 1, \dots$.
+		\end{problem}
+		\pause
+		\begin{solution}
+			$$
+				ans = 2^{F(gcd(x_1,x_2,\dots,x_n))}-1
+			$$
+		\end{solution}
+	\end{frame}
+
+	\begin{frame}{2018 Multi-University Training Contest 6}
+		\begin{problem}[bookshelf]
+			有 $N$ 本一摸一样的书，有一个共有$K$ 层的书架，现在要把书都放到书架上。
+			放完后假设第 $i$ 层书架有 $s_i$本书，则该层书架的稳固值为 $2^{F(s_i)}-1$。
+			定义整个书架的美观值为所有层书架的稳固值的GCD。
+			问现在随机放这些书($N=s_1+s_2+\cdots+s_K$，两个放法不同当且仅当某个$i$使得$s_i \neq s_i'$)，整个书架的美观值的期望值是多少。
+			
+			$1 \leq N, K \leq 10^5$，答案模$10^9+7$。
+		\end{problem}
+		\pause
+		\begin{solution}
+			我们本质要求$d = gcd(s_1,s_2,\dots,s_K)$的分布，枚举$d$，然后求gcd是$d$倍数的方案的个数，然后容斥。
+		\end{solution}
+	\end{frame}
+
+	\begin{frame}{2018 Multi-University Training Contest 6}
+		\begin{problem}[Shoot Game]
+			平面上，有$n$个障碍物，每个障碍物由$(H,L,R,w)$描述，表示障碍物是一条在高度是$H$，x坐标从$L$到$R$的闭线段，强度为$w$。
+			
+			你现在可以从原点发射一些射线，每条射线的能量由你定，发射后如果碰到强度小于等于能量的障碍物，则障碍物被清除，射线继续向前，且能量不变；否则射线消失。
+			
+			请问最少需要发射多少能量的射线才能清除所有障碍物？
+			
+			$1 \leq n \leq 300$, $1 \leq H \leq 10^9$, $-10^9 \leq L, R \leq 10^9$, $0 \leq w \leq 10^9$.
+		\end{problem}
+	\end{frame}
+	\begin{frame}
+		\begin{solution}
+			任何一种方案都可以转化成射向端点的方案，然后我们就考虑向这$2n$个端点发射射线。
+			
+			然后用$dp[l][r]$表示，消灭所有完全包含在$l$到$r$这段的线段最少需要多少能量，因为每个区间中，能量最大的一定会被消灭，只需要枚举我们消灭能量最大的障碍在哪个节点就行。
+		\end{solution}
+	\end{frame}
+
+\end{document}
