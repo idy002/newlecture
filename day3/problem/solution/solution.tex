@@ -17,25 +17,25 @@
 		\maketitle
 	\end{frame}
 
-	\begin{frame}{split}
+	\begin{frame}{keys}
 		\begin{solution}
-			$4$是最小的合数，然后我们贪心地取，最后根据$n \bmod 4$来特判一下。
+			可以证明,一定存在一个最优解,是拿的连续一段钥匙,且人是按顺序拿的. 然后暴力就好
 		\end{solution}
 	\end{frame}
 
-	\begin{frame}{cross} 
+	\begin{frame}{cards} 
 		\begin{solution}
-			建一个图,如果一个两个点同$x$坐标或同$y$坐标,则把它们连边,分别求解每个连通块的答案,再乘起来.
-			
-			对于一个连通块,如果它是一棵树,则答案为$2^{x+y} - 1$,否则为$2^{x+y}$,其中$x$是所有点$x$坐标集合的大小,$y$同理.
+			模拟题,用些数据结构加速即可.
 		\end{solution}	
 	\end{frame}
 
-	\begin{frame}{string}
+	\begin{frame}{bamboo}
 		\begin{solution}
-			考虑一个长度为$k$的所有01串有$2^k$个,而一开始我们所有长度为$k$的01串最多有$100k$个,每次合并最多增加$k$个,合并$100$次增加$100k$,最终有$2^k \leq 200k$,解得$k \leq 12$.
-			
-			所以我们只需要考虑长度小于等于$12$的01串即可,然后就各种操作都可以啦.
+			对于一个$d$,对应的答案是:
+			$$
+				\sum_{i = 1}^{n}\left\lceil \frac{a_i}{d} \right\rceil d - a_i
+			$$
+			我们发现,对于一个固定的$a_i$,$\left\lceil \frac{a_i}{d} \right\rceil$的取值个数为$O(\sqrt{a_i})$. 对于所有$a_i$,有$O(n\sqrt{a_i})$个值,从而可以把$d$的取值分成这么多段,每一段都是关于$d$的一次函数,可以直接算出最大的$d$(或者二分出来).
 		\end{solution}
 	\end{frame} 
 

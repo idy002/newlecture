@@ -1,0 +1,66 @@
+\documentclass[11pt,serif]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{xeCJK}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{bbm}
+\usepackage{graphicx}
+\usetheme{Boadilla}
+
+\begin{document}
+	\author{丁尧尧}
+	\title{STL 常用容器和算法}
+	\date{\today}
+	
+	\begin{frame}[plain]
+	\maketitle
+	\end{frame}
+
+	\begin{frame}
+		\tableofcontents
+	\end{frame}
+
+	\section{常用容器}
+	\begin{frame}{common} 
+		\begin{description}
+			\item [begin(), end()] 返回第一个元素和最后一个元素的下一个的迭代器
+			\item [size()] 返回当前元素个数
+			\item [empty()] 返回一个布尔,表示是否当前容器为空
+			\item [relational operators] 容器一般都可以直接比较大小
+		\end{description}
+	\end{frame} 
+	\begin{frame}{vector}
+		\begin{description}
+			\item [push\_back(...),pop\_back()] 在最后插入一个元素,删除最后一个元素
+			\item [resize()] 重新调整当前vector大小
+			\item [front(), back()] 返回第一个元素,返回最后一个元素
+		\end{description}
+	\end{frame}
+	\begin{frame}{set, map}
+		\begin{description}
+			\item[operator[]] 可以直接下标操作(map独有)
+			\item[insert(...)]  插入元素
+			\item[erase(...)] 删除元素
+			\item[lower\_bound(...), upper\_bound(...)] 返回第一个大于等于或大于的元素的迭代器
+			\item[count(...)] 统计容器中key为某元素的个数,只能是0或1,常用来判断某元素是否存在于容器中
+		\end{description}
+	
+		还有multi\_map,multi\_set.
+	\end{frame}
+
+	\section{常用算法}
+	\begin{frame}{常用算法}
+		\begin{description}
+			\item[sort] 给能做<比较的元素集合排序(常用)
+			\item[lower\_bound,upper\_bound] 在一个排序后的序列上,做二分,返回第一个大于等于某元素的元素的迭代器.(upper\_bound是大于)(常用)
+			\item[unique] 在一个排序后的序列上,去重(常用于离散化)
+			\item[nth\_element] 将序列第k小的元素放置在第k个位置上,然后它前面的都小于等于它,后面的都大于等于它.(常用语kd-tree)
+			\item[next\_permutation] 返回下一个排列(常用来写大暴力)
+			\item[reverse] 翻转一个序列(有的时候不想写for循环)
+			\item[rotate] 将序列逆时针旋转
+		\end{description}
+	\end{frame} 
+
+\end{document}

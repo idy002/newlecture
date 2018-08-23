@@ -22,66 +22,62 @@ idy002, \today
 
 \begin{document}
 
-\begin{problem}{split}{split.in}{split.out}{1 second}{256MB}
+\begin{problem}{recover}{recover.in}{recover.out}{1 second}{256MB}
 
-    给你$q$个数，对于每个数$n_i$，问$n_i$最多能分成多少个合数之和，如果不能分解输出$-1$。
-
+    红红在恢复一个字符串.
+    
+    现在,红红得到了$n$个资料,第$i$个资料显示,在$x_{i,1}, x_{i, 2}, \dots, x_{i, k_i}$这些位置开始,都有同一个子串$s_i$.
+    
+    现在红红请你帮忙根据已有资料,恢复这个字符串,如果有多个可能的字符串满足条件,输出字典序最小的那个字符串.
+    
     \InputFile
 
-	第一行一个整数$q$表示询问数。
+	第$1$行包含一个整数$n$;
 	
-	接下来$q$行，每行一个整数$n_i$表示要分解的数。
+	接下来$n$行,每行包含一个资料$s_i \; k_i \; x_{i,1} \; x_{i,2} \; \dots \; x_{i, k_i}$.
 
     \OutputFile
 
-	如果能分解，则输出最多分解成多少个合数之和，否则输出$-1$。
+	输出要求的字符串.
 
     \Example
 
     \begin{example}
         \exmp{
-            1
-            12
-        }{
             3
+            a 4 1 3 5 7
+            ab 2 1 5
+            ca 1 4
+        }{
+            abacaba
         }%
     \end{example}
 
-	样例解释：$12 = 4 + 4 + 4$是最多的分解。
-
     \begin{example}
 		\exmp{
-			2
-			6
-			8
-		}{
 			1
-			2
+			a 1 3
+		}{
+			aaa
 		}%
 	\end{example}
-
-	样例解释：$6 = 6$和$8 = 4 + 4$是最多的分解。
 
     \begin{example}
 		\exmp{
 			3
-			1
-			2
-			3
+			ab 1 1
+			aba 1 3
+			ab 2 3 5
 		}{
-			-1
-			-1
-			-1
+			ababab
 		}%
 	\end{example}
-
-	样例解释：$1,2,3$不能分解成合数的和。
 
     \Note
     
     \begin{itemize}
 		\item 对于$30\%$的数据，$1 \leq q \leq 100$, $1 \leq n_i \leq 100$;
-		\item 对于$100\%$的数据，$1 \leq q \leq 10^5$, $1 \leq n_i \leq 10^9$.
+		\item 对于$100\%$的数据，$1 \leq n \leq 10^5$, $1 \leq n_i \leq 10^9$.
     \end{itemize}
 
 \end{problem}
