@@ -25,8 +25,13 @@ for n in cases :
 #TODO generate the data
 
     cout += "%d\n" % n
-    for i in range(n) :
-        cout += "%d " % randint(1,n/10)
+    lst = []
+    for i in range(n/2) :
+        lst.append(n/2 - i)
+    for i in range(n/2) :
+        lst.append(randint(1,n/10))
+    for a in lst :
+        cout += "%d " % a
     cout += "\n"
 
 ##-----

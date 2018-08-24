@@ -1,6 +1,6 @@
 #!/bin/bash
 
-prob="probname"
+prob="evolution"
 
 for((i=1;i<=10;i++))
 do

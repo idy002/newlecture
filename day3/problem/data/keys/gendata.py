@@ -18,18 +18,22 @@ cases = [
         (5000,10000)
         ]
 cur = 0
+
 for (n,k) in cases :
     cout = ""
     print "make %d..." % cur
 ##-----
 #TODO generate the data
 
-    cout += "%d %d %d\n" % (n, k, randint(1,10**9))
+    kk = randint(n, k)
+    mid = (1 + 10**9) / 2
+    cout += "%d %d %d\n" % (n, kk, mid + randint(-3 * n, 3 * n))
     for i in range(n) :
-        cout += "%d " % randint(1, 10**9)
+        cout += "%d " % (mid + randint(-3 * n, 3 * n))
     cout += "\n"
-    for i in range(k) :
-        cout += "%d " % randint(1, 10**9)
+    b = choice( [ 0, 2 ])
+    for i in range(kk) :
+        cout += "%d " % randint(1,10**9)
     cout += "\n"
 
 ##-----
