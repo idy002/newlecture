@@ -22,55 +22,78 @@ idy002, \today
 
 \begin{document}
 
-\begin{problem}{game}{game.in}{game.out}{1 second}{256MB}
+\begin{problem}{color}{color.in}{color.out}{1 second}{256MB}
 
-    晴天和阴天在玩游戏.
+    给你一棵$n$个点的无根树,每个点有两个颜色:黑色或白色,现在你可以做一种操作:$paint(u)$,对于一个点$v$,如果$u$和$v$之间的简单路径上的点(包括$u$和$v$)是相同的一种颜色,那么$v$的颜色会反转. 
     
-    这个游戏由很多轮组成,一开始他们手中都有一个数字$1$,每一轮,他们会石头剪子布来决定谁来进行这一轮,赢得人会选择一个正整数$s$,然后将自己手中的数乘以$s^2$,对手手中的数字则乘以$s$. 
+    请问,你最少需要做多少次操作,能使得树的所有点的颜色,变成一样.
     
-    现在下雨天想问你,会不会在某些轮数过后,晴天手中的数字是$a$,而阴天手中的数字是$b$.
+    \begin{figure}[h!]
+    	\centering
+    	\begin{minipage}[c]{0.5\textwidth}	
+    		\centering
+    		\includegraphics[width=0.45\linewidth]{p1s1_1}	
+    		\caption{操作之前}	
+    	\end{minipage}%
+    	\begin{minipage}[c]{0.5\textwidth}	
+    		\centering
+    		\includegraphics[width=0.45\linewidth]{p1s1_2}	
+    		\caption{进行$paint(3)$之后}	
+    	\end{minipage}%
+    \end{figure}
+    
     
     \InputFile
+     
+    第一行包含一个整数$T$表示数据组数;
+    
+    对于每组测试数据:
 
-	第一行包含一个整数$T$表示下雨天的问题数;
+	第一行包含一个整数$n$表示点的个数;
 	
-	接下来$T$行,每行包含两个整数$a$和$b$,表示下雨天的一个问题.
+	第二行包含$n$个整数,每个数要么是$0$要么是$1$,表示每个点的颜色;
+	
+	接下来$n-1$行,每行两个整数$u, v$表示一条边.
 
     \OutputFile
 
-	输出$T$行,每行包含"YES"或者"NO",表示是否可能存在给出的情况.
+	输出一个整数表示答案.
 
     \Example
 
     \begin{example}
         \exmp{
-            6
+        	2
+            11
+            0 0 0 1 1 0 1 0 0 1 1
+            1 2
+            1 3
             2 4
-            75 45
-            8 8
-            16 16
-            247 994
-            1000000000 1000000
+            2 5
+            5 6
+            5 7
+            3 8
+            3 9
+            3 10
+            9 11
+            4
+            0 0 0 0
+            1 2
+            2 3
+            3 4
         }{
-            Yes
-            Yes
-            Yes
-            No
-            No
-            Yes
+            2
+            0
         }%
     \end{example}
 
-	样例解释： 对于第一个问题,可能的游戏过程是:第一轮阴天石头剪子布赢了,然后他选择$s = 2$.
-	
-	第二个问题,第一轮晴天赢了并选了$s = 5$, 第二轮阴天赢了并选了$s = 3$.
+
 	
     \Note
     
     \begin{itemize}
-		\item 对于$30\%$的数据，$1 \leq T, a, b \leq 500$;
-		\item 对于$60\%$的数据，$1 \leq T \leq 100$, $1 \leq a, b \leq 10^9$.
-		\item 对于$100\%$的数据,$1 \leq T \leq 350000$, $1 \leq a, b \leq 10^9$.
+		\item 对于$30\%$的数据，$1 \leq T, n \leq 10$;
+		\item 对于$100\%$的数据,$1 \leq T \leq 100$, $1 \leq n \leq 10^5$, 所有所有数据组数的$n$的和小于等于$2\times 10^5$, $1 \leq u, v \leq n$.
     \end{itemize}
 
 \end{problem}

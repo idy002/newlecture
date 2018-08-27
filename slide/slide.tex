@@ -190,4 +190,98 @@
 		\end{solution}
 	\end{frame}
 
+	\begin{frame}
+		\begin{problem}
+			先来道水题轻松一下.
+			
+			对于一个字符串,我们可以有两种操作:
+			\begin{itemize}
+				\item 在最后加B.
+				\item 将字符串翻转后,在最后加上A.
+			\end{itemize}
+			现在给出两个串$A,B$,请你求出最长的一个串$C$,使得$C$可以通过不断做以上两种操作变成$A$和$B$,输出$C$.
+		\end{problem} 
+	\end{frame}
+
+	\begin{frame}{bzoj1776}
+		\begin{problem}
+			一$n$个点的棵树,每个点有一个颜色,请问对于每种颜色而言,距离最远的一对点的距离是多少?
+		\end{problem}	
+	
+		\pause 
+		
+		\begin{solution}
+			一定可以选该颜色最深的点作为一个端点.
+		\end{solution}
+		
+	\end{frame}
+
+	\begin{frame}
+		\begin{problem}
+			请你维护一个向量集合,支持以下操作:
+			\begin{itemize}
+				\item 加入一个向量(保证现在没有该向量)
+				\item 删除一个向量(保证以前加入过)
+				\item 询问一个向量是否可以被当前向量集合线性表示
+			\end{itemize}
+		\end{problem} 
+		
+		\pause
+		
+		\begin{solution}
+			时间线段树
+		\end{solution} 
+	\end{frame}
+
+	\begin{frame}
+		\begin{problem}
+			一个$n\times m$的网格,上面有些地方是海,有些地方是陆地,已知陆地是四连通的,请问最少删掉几个陆地,使得陆地不再四连通?
+		\end{problem}
+		
+		\pause
+		
+		\begin{solution}
+			hint1: 最多删除两个点
+			
+			\pause
+			
+			hint2: 双联通
+		\end{solution} 
+	 
+	\end{frame}
+
+	\begin{frame}{随机游走}
+		\begin{problem}
+			给你一棵$n$个点的树,从$1$号节点开始,每次随机选择一条边走过去,请问走到$n$号点的期望时间是多少.
+		\end{problem}
+	
+	
+		\pause
+		
+		\begin{solution}
+			期望的线性性.
+		\end{solution} 
+		 
+	\end{frame}
+
+
+
+	\begin{frame}{CF 371 Div1 C}
+		\begin{problem}
+			给你$n$个整数$a_1,a_2,\dots,a_n$,你每次操作可以选择一个数,然后将这个数加1或减1,请问你最少需要操作多少次,使得该序列不降?
+			
+			$1 \leq n \leq 3000$, $1 \leq a_i \leq 10^9$.
+			
+			\pause
+			
+			提示: 一定存在一种最小方案,使得最终序列的每个数在一开始出现过.
+			
+			\pause
+			
+			如果将问题改成"使得该序列严格递增",应该怎么做?
+		\end{problem}
+	\end{frame}
+
+	
+	
 \end{document}
